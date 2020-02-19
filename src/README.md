@@ -15,6 +15,7 @@
 - props
 
 ## 2回目 - 2月18日
+##### 資料：https://www.to-r.net/s/mbc/react/02.pdf
 - Event
   - onClick()
   - onChange()
