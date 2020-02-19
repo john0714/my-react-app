@@ -3,7 +3,6 @@ import './App.css';
 
 import Header from "./Header";
 import StudyList from "./List";
-import Form from "./Form";
 
 function App() {
   return (
@@ -11,7 +10,6 @@ function App() {
       <Header/>
       <p>TODOが追加できるよ</p>
       <StudyList/>
-      <Form/>
     </div>
   );
 }
