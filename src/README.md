@@ -7,8 +7,9 @@
 - React Hooks(version 16.8+)
   - export default [function] <-- React Hooks
   - export default [class] <-- React old writing
-- JSX → {}, Reactの基本文坊
-- `.js`ファイルの中は`javaScript`と`html`その中で{}を書いて書く方法は`JSX`
+- JSX → Reactの基本文坊
+  - `.js`ファイルの中は`javaScript`と`html`を同時に使うしそのHTML部分中で{}を書いて`javaScript`を書くこの全ての書き方を`JSX`と呼ぶ
+  - `javaScript`と`html`の一体化としたら理解しやすい
 - Component
 - return()
 - array, map
