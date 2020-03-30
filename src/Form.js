@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
+import React,{useState} from 'react'
+function Form({addTodo}) {
+ const [myText , changeMyText] = useState('')
 
-function Form({list, changeList, reloadList}) { // App.jsでJSXで投入した値なので{}をつけてJSXにして使う
-  const [tmpText, changeTmpText] = useState('ダミー')
+ const handleSave = () => {
+  if(!myText) return
 
-  return(
+    addTodo(myText)
+    changeMyText('')
+  }
+
+  return (
     <div className="form">
-      <label htmlFor="text">追加</label>
-      <input itemType="text" id="text"
-             value={tmpText}
-             onChange={e=>changeTmpText(e.currentTarget.value)}
-      />
-      <button itemType="button"
-        onClick={
-          ()=> {
-            list.push(tmpText)
-            changeList(list)
-            reloadList()
-          }
-        }
-      >追加</button>
-    </div>
+    <label htmlFor="text">追加:</label>
+    <input
+      type="text"
+      id="text"
+      value={myText}
+      onChange={e=>changeMyText(e.currentTarget.value)}
+    />
+    <input type="button" value="追加" onClick={handleSave}/>
+  </div>
   );
 }
 
-export default Form;
+export default Form 

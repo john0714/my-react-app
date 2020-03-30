@@ -1,41 +1,16 @@
-import React, { useState } from 'react';
-import Form from "./Form";
+import React from 'react'
 
-function List() {
-  const [checkedList] = useState(["Reactのインストール", "JSXを学ぶ"])
-  const [list, changeList] = useState(["コンポーネント", "演習"])
-  const [isEdited, changeEditFlag] = useState(true)
-
-  const reloadList = () => {
-    if(isEdited) {
-      changeEditFlag(false)
-    } else {
-      changeEditFlag(true)
-    }
-  };
-
+function List({items,toggleTodo}) {
   return (
-    <>
-      {
-        isEdited
-        ?
-          <ul className="list">
-            {checkedList.map((item, i) => <li className="checked" key={i}> {item} </li>)}
-            {list.map((item, i) => <li key={i}> {item} </li>)}
-          </ul>
-          :
-          <ul className="list">
-            {checkedList.map((item, i) => <li className="checked" key={i}> {item} </li>)}
-            {list.map((item, i) => <li key={i}> {item} </li>)}
-          </ul>
-      }
-      <Form
-        list={list}
-        changeList={changeList}
-        reloadList={reloadList}
-      />
-    </>
+  <ul className="list">
+    {items.map((item,i) => (
+      <li
+        key={i}
+        onClick={()=>toggleTodo(i)}
+      >{item.checked?<del>{item.title}</del>:item.title}</li>
+    ))}
+  </ul>
   );
 }
 
-export default List;
+export default List 
