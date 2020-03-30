@@ -1,12 +1,16 @@
-import React,{useState} from 'react'
-function Form({addTodo}) {
- const [myText , changeMyText] = useState('')
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'; 
 
- const handleSave = () => {
-  if(!myText) return
+function Form({addTodo}) {
+  const [myText , changeMyText] = useState('')
+  const history = useHistory()
+
+  const handleSave = () => {
+    if(!myText) return
 
     addTodo(myText)
     changeMyText('')
+    history.push('/') 
   }
 
   return (

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './Header'
 import List from './List'
 import Form from './Form'
+import Delete from './Delete' 
 
 function App() {
   // List의 내용을 State로 관리
@@ -21,6 +23,9 @@ function App() {
     }
   ])
 
+  const todo = items.map((item,key)=>({...item,key})).filter(item => !item.checked)
+  const finishedTodo = items.map((item,key)=>({...item,key})).filter(item => item.checked) 
+
   const addTodo = (title) => {
     const newItem = {
       title,
@@ -30,6 +35,8 @@ function App() {
   }
 
   const toggleTodo = (key) =>{
+    console.log(key);
+    console.log(items);
     const newItems = items.map((item,_key) => {
       if(_key === key){
         return {
@@ -42,12 +49,21 @@ function App() {
     changeItem(newItems)
   }
 
+  const deleteTodo = (key) => {
+    const newItems = items.filter((_, _key) => _key !== key)
+    changeItem(newItems)
+  } 
+
   return (
-  <>
-  <Header />
-    <List items={items} toggleTodo={toggleTodo}/> 
-    <Form addTodo={addTodo}/>
-  </>
+    <BrowserRouter>
+      <Header/>
+      <Switch>
+        <Route exact path='/'><List items={todo} toggleTodo={toggleTodo}/></Route>
+        <Route exact path='/finished'><List items={finishedTodo} toggleTodo={toggleTodo}/></Route> 
+        <Route exact path='/add'><Form addTodo={addTodo}/></Route>
+        <Route exact path='/delete/:key'><Delete items={items} deleteTodo={deleteTodo}/></Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
