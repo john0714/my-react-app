@@ -4,6 +4,7 @@ import Header from './Header'
 import List from './List'
 import Form from './Form'
 import Delete from './Delete' 
+import Edit from './Edit'
 
 function App() {
   // List의 내용을 State로 관리
@@ -54,6 +55,14 @@ function App() {
     changeItem(newItems)
   } 
 
+  const editTodo = (key, todo) => {
+    const newItems = items.map((_todo, _key) => _key === key ? {
+      ..._todo,
+      title: todo
+    } : _todo)
+    changeItem(newItems)
+  }
+
   return (
     <BrowserRouter>
       <Header/>
@@ -62,6 +71,7 @@ function App() {
         <Route exact path='/finished'><List items={finishedTodo} toggleTodo={toggleTodo}/></Route> 
         <Route exact path='/add'><Form addTodo={addTodo}/></Route>
         <Route exact path='/delete/:key'><Delete items={items} deleteTodo={deleteTodo}/></Route>
+        <Route exact path='/edit/:key'><Edit items={items} editTodo={editTodo}/></Route>
       </Switch>
     </BrowserRouter>
   );

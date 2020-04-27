@@ -11,6 +11,7 @@ function List({items, toggleTodo}) {
           {item.checked?"再開":"終了"}
         </button>
         <Link to={`delete/${item.key}`}>削除</Link>
+        <Link to={`edit/${item.key}`}>編集</Link>
         {item.title}
         </li>
       ))
