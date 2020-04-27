@@ -67,8 +67,8 @@ function App() {
     <BrowserRouter>
       <Header/>
       <Switch>
-        <Route exact path='/'><List items={todo} toggleTodo={toggleTodo}/></Route>
-        <Route exact path='/finished'><List items={finishedTodo} toggleTodo={toggleTodo}/></Route> 
+        <Route exact path='/'><List finished={false}/></Route>
+        <Route exact path='/finished>'><List finished={true}/></Route>
         <Route exact path='/add'><Form addTodo={addTodo}/></Route>
         <Route exact path='/delete/:key'><Delete items={items} deleteTodo={deleteTodo}/></Route>
         <Route exact path='/edit/:key'><Edit items={items} editTodo={editTodo}/></Route>
