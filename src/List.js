@@ -9,6 +9,7 @@ function List({finished}) {
 
   useEffect(() => {
     axios.get(PATH + 'todos').then(res => {
+      console.log(res);
       changeTodoList(res.data);
     })
   }, [])
@@ -18,7 +19,7 @@ function List({finished}) {
       ...todo,
       checked: !todo.checked
     }
-    axios.put(PATH + 'todo/' + todo.id, newTodo).then(() => {
+    axios.put(PATH + 'todos/' + todo.id, newTodo).then(() => {
       const newTOdoList = todoList.map(_todo => _todo.id === todo.id ? newTodo : _todo)
       changeTodoList(newTOdoList);
     })

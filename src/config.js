@@ -1,1 +1,1 @@
-export const PATH = 'https://us-central1-react-todo-23957.cloudfunctions.net/api/'
+export const PATH = 'http://localhost:5000/'

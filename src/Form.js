@@ -10,7 +10,7 @@ function Form() {
   const handleSave = () => {
     if(!myText) return
 
-    axios.post(PATH + 'todo', {
+    axios.post(PATH + 'todos', {
       title:myText,
       checked:false
     }).then(() => {
