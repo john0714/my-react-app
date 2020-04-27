@@ -33,8 +33,8 @@ function List({finished}) {
           <button type="button" onClick={() => toggleTodo(todo)} >
             {todo.checked?"再開":"終了"}
         </button>
-        <Link to={`delete/${todo.key}`}>削除</Link>
-        <Link to={`edit/${todo.key}`}>編集</Link>
+        <Link to={`delete/${todo.id}`}>削除</Link>
+        <Link to={`edit/${todo.id}`}>編集</Link>
         </li>
       ))
     }

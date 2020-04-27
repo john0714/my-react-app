@@ -1,20 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory,useParams } from 'react-router-dom';
+import axios from 'axios';
+import { PATH } from './config';
 
 function Delete({items, deleteTodo}) {
+    const { todo, changeTodo } = useState(null)
     const { key } = useParams();
     const history = useHistory();
 
-    const deletedTodo = items.find((_,_key) => _key === Number(key)).title
+    useEffect(() => {
+        axios.get(PATH + 'todo/' + key).then(res => {
+            changeTodo(res.data);
+        })
+    }, [])
 
     const handleDelete = () =>{
         deleteTodo(Number(key))
         history.push('/')
     }
 
+    if (!todo) {
+        return <p>loading</p>
+    }
+
     return (
         <div className="form">
-            <p>「{deletedTodo}」削除して良いですか？</p>
+            <p>「{todo.title}」削除して良いですか？</p>
             <input type="button" value="削除" onClick={handleDelete}/>
         </div>
     );

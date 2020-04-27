@@ -24,18 +24,10 @@ function App() {
     }
   ])
 
-  const addTodo = (title) => {
-    const newItem = {
-      title,
-      checked:false
-    }
-    changeItem([...items,newItem])
-  }
-
   const deleteTodo = (key) => {
-    const newItems = items.filter((_, _key) => _key !== key)
+    const newItems = items.filter((_,_key) => _key !== key)
     changeItem(newItems)
-  } 
+  }
 
   const editTodo = (key, todo) => {
     const newItems = items.map((_todo, _key) => _key === key ? {
@@ -52,7 +44,7 @@ function App() {
         <Route exact path='/'><List finished={false}/></Route>
         <Route exact path='/finished>'><List finished={true}/></Route>
         <Route exact path='/add'><Form /></Route>
-        <Route exact path='/delete/:key'><Delete items={items} deleteTodo={deleteTodo}/></Route>
+        <Route exact path='/delete/:key'><Delete items={items} deleteTodo={deleteTodo} /></Route>
         <Route exact path='/edit/:key'><Edit items={items} editTodo={editTodo}/></Route>
       </Switch>
     </BrowserRouter>
