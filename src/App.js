@@ -24,30 +24,12 @@ function App() {
     }
   ])
 
-  const todo = items.map((item,key)=>({...item,key})).filter(item => !item.checked)
-  const finishedTodo = items.map((item,key)=>({...item,key})).filter(item => item.checked) 
-
   const addTodo = (title) => {
     const newItem = {
       title,
       checked:false
     }
     changeItem([...items,newItem])
-  }
-
-  const toggleTodo = (key) =>{
-    console.log(key);
-    console.log(items);
-    const newItems = items.map((item,_key) => {
-      if(_key === key){
-        return {
-          ...item,
-          checked: !item.checked
-        }
-      }
-      return item
-    })
-    changeItem(newItems)
   }
 
   const deleteTodo = (key) => {

@@ -13,8 +13,15 @@ function List({finished}) {
     })
   }, [])
 
-  const toggleTodo = () => {
-    //トグル処理実装
+  const toggleTodo = (todo) => { 
+    const newTodo = {
+      ...todo,
+      checked: !todo.checked
+    }
+    axios.put(PATH + 'todo/' + todo.id, newTodo).then(() => {
+      const newTOdoList = todoList.map(_todo => _todo.id === todo.id ? newTodo : _todo)
+      changeTodoList(newTOdoList);
+    })
   }
 
   return (
@@ -23,7 +30,7 @@ function List({finished}) {
       todoList.filter(todo => todo.checked === finished).map((todo) => (
         <li key={todo.id}>
           <p>{todo.title}</p>
-          <button type="button" onClick={toggleTodo} >
+          <button type="button" onClick={() => toggleTodo(todo)} >
             {todo.checked?"再開":"終了"}
         </button>
         <Link to={`delete/${todo.key}`}>削除</Link>
