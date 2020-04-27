@@ -1,16 +1,21 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'; 
+import axios from 'axios';
+import { PATH } from './config'
 
-function Form({addTodo}) {
+function Form() {
   const [myText , changeMyText] = useState('')
   const history = useHistory()
 
   const handleSave = () => {
     if(!myText) return
 
-    addTodo(myText)
-    changeMyText('')
-    history.push('/') 
+    axios.post(PATH + 'todo', {
+      title:myText,
+      checked:false
+    }).then(() => {
+      history.push('/')
+    }) 
   }
 
   return (

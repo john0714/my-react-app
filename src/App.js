@@ -51,7 +51,7 @@ function App() {
       <Switch>
         <Route exact path='/'><List finished={false}/></Route>
         <Route exact path='/finished>'><List finished={true}/></Route>
-        <Route exact path='/add'><Form addTodo={addTodo}/></Route>
+        <Route exact path='/add'><Form /></Route>
         <Route exact path='/delete/:key'><Delete items={items} deleteTodo={deleteTodo}/></Route>
         <Route exact path='/edit/:key'><Edit items={items} editTodo={editTodo}/></Route>
       </Switch>
